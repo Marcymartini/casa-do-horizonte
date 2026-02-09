@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa do Horizonte - Hôtel au Portugal</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            color: #4a4a4a;
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #d4a373 0%, #c67b5c 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 300;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(212, 163, 115, 0.3), rgba(198, 123, 92, 0.3)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f4e4d4" width="1200" height="600"/><circle cx="900" cy="100" r="80" fill="%23ffd89b" opacity="0.5"/><path d="M0 400 Q300 350 600 400 T1200 400 L1200 600 L0 600 Z" fill="%2387ceeb" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-content h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        /* Container général */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #c67b5c;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Introduction */
+        .intro {
+            background: #fef9f3;
+            text-align: center;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Galerie */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-item {
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Chambres */
+        .rooms {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .room-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .room-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .room-image {
+            height: 200px;
+            background: linear-gradient(135deg, #f4e4d4 0%, #d4a373 100%);
+        }
+
+        .room-content {
+            padding: 1.5rem;
+        }
+
+        .room-content h3 {
+            color: #c67b5c;
+            margin-bottom: 0.5rem;
+        }
+
+        .room-price {
+            font-size: 1.5rem;
+            color: #5a9fb8;
+            font-weight: bold;
+            margin-top: 1rem;
+        }
+
+        /* Services */
+        .services {
+            background: #f4e4d4;
+            padding: 3rem 2rem;
+            border-radius: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .service-item {
+            padding: 1rem;
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Avis */
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial {
+            background: #fef9f3;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #5a9fb8;
+        }
+
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #c67b5c;
+        }
+
+        /* CTA Réservation */
+        .cta {
+            text-align: center;
+            background: linear-gradient(135deg, #5a9fb8 0%, #87ceeb 100%);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 10px;
+        }
+
+        .cta h2 {
+            color: white;
+        }
+
+        .btn {
+            display: inline-block;
+            background: white;
+            color: #5a9fb8;
+            padding: 1rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Footer */
+        footer {
+            background: #4a4a4a;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero-content h2 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header avec Navigation -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>Casa do Horizonte</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#hotel">L'hôtel</a></li>
+                <li><a href="#chambres">Chambres</a></li>
+                <li><a href="#reservation">Réservation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h2>Casa do Horizonte</h2>
+            <p>Votre refuge face à l'océan Atlantique</p>
+        </div>
+    </section>
+
+    <!-- Introduction -->
+    <div class="container">
+        <section class="intro" id="hotel">
+            <h2>Bienvenue</h2>
+            <p>
+                Nichée sur la côte portugaise, Casa do Horizonte est bien plus qu'un simple hôtel. 
+                C'est une maison familiale où chaque lever de soleil devient un spectacle, où le murmure 
+                des vagues berce vos journées. Notre petit établissement, tenu avec passion depuis trois 
+                générations, vous accueille dans une atmosphère chaleureuse et authentique. Ici, le temps 
+                ralentit, les sourires sont sincères, et l'horizon semble infini. À quelques pas de la plage 
+                et du village typique d'Ericeira, venez découvrir le Portugal dans ce qu'il a de plus vrai : 
+                la douceur de vivre, la lumière dorée et la générosité du cœur.
+            </p>
+        </section>
+
+        <!-- Galerie Photos -->
+        <section>
+            <h2>Notre Maison</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23f4e4d4' width='400' height='300'/><rect fill='%23c67b5c' x='50' y='80' width='300' height='150'/><rect fill='%23fff' x='80' y='110' width='60' height='60'/><rect fill='%23fff' x='260' y='110' width='60' height='60'/><rect fill='%23d4a373' x='165' y='150' width='70' height='80'/><text x='200' y='260' font-size='20' fill='%234a4a4a' text-anchor='middle'>Façade</text></svg>" alt="Façade de l'hôtel">
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23fef9f3' width='400' height='300'/><rect fill='%23d4a373' x='50' y='100' width='150' height='120'/><circle cx='270' cy='100' r='40' fill='%23f4e4d4'/><rect fill='%235a9fb8' x='220' y='200' width='140' height='80'/><text x='200' y='280' font-size='18' fill='%234a4a4a' text-anchor='middle'>Chambre confort</text></svg>" alt="Chambre">
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%2387ceeb' width='400' height='300'/><ellipse cx='200' cy='80' rx='100' ry='40' fill='%23ffd89b'/><path d='M0 200 Q200 150 400 200 L400 300 L0 300 Z' fill='%235a9fb8'/><text x='200' y='280' font-size='18' fill='%23fff' text-anchor='middle'>Vue sur mer</text></svg>" alt="Vue mer">
+                </div>
+                <div class="gallery-item">
+                    <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'><rect fill='%23f4e4d4' width='400' height='300'/><rect fill='%23d4a373' x='100' y='80' width='200' height='30'/><circle cx='150' cy='150' r='30' fill='%23c67b5c'/><circle cx='250' cy='150' r='30' fill='%23c67b5c'/><rect fill='%23fff' x='120' y='200' width='160' height='60'/><text x='200' y='280' font-size='18' fill='%234a4a4a' text-anchor='middle'>Terrasse</text></svg>" alt="Terrasse">
+                </div>
+            </div>
+        </section>
+
+        <!-- Chambres et Tarifs -->
+        <section id="chambres">
+            <h2>Nos Chambres</h2>
+            <div class="rooms">
+                <div class="room-card">
+                    <div class="room-image"></div>
+                    <div class="room-content">
+                        <h3>Chambre Standard</h3>
+                        <p>Chambre cosy avec tout le confort nécessaire, décorée avec authenticité. Lit double, salle de bain privée, wifi.</p>
+                        <p class="room-price">65€ / nuit</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image"></div>
+                    <div class="room-content">
+                        <h3>Chambre Vue Mer</h3>
+                        <p>Réveillez-vous face à l'océan. Balcon privé, lit queen size, espace détente. Le luxe simple.</p>
+                        <p class="room-price">95€ / nuit</p>
+                    </div>
+                </div>
+                <div class="room-card">
+                    <div class="room-image"></div>
+                    <div class="room-content">
+                        <h3>Suite Familiale</h3>
+                        <p>Espace généreux pour toute la famille. Deux chambres communicantes, terrasse partagée, idéale pour 4 personnes.</p>
+                        <p class="room-price">140€ / nuit</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section>
+            <div class="services">
+                <h2>Nos Services</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="service-icon">📶</div>
+                        <h4>Wifi gratuit</h4>
+                        <p>Dans tout l'hôtel</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🥐</div>
+                        <h4>Petit-déjeuner</h4>
+                        <p>Produits locaux</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🌅</div>
+                        <h4>Terrasse</h4>
+                        <p>Vue panoramique</p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-icon">🏖️</div>
+                        <h4>Plage</h4>
+                        <p>À 200m à pied</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Avis Clients -->
+        <section>
+            <h2>Ils ont aimé leur séjour</h2>
+            <div class="testimonials">
+                <div class="testimonial">
+                    <p>"Un havre de paix avec une vue à couper le souffle. L'accueil est chaleureux et sincère. Nous reviendrons sans hésiter !"</p>
+                    <p class="testimonial-author">— Sophie & Marc, France</p>
+                </div>
+                <div class="testimonial">
+                    <p>"L'endroit parfait pour se ressourcer. Le petit-déjeuner maison est délicieux et la proximité de la plage est idéale."</p>
+                    <p class="testimonial-author">— Ana Silva, Portugal</p>
+                </div>
+                <div class="testimonial">
+                    <p>"Une adresse authentique loin du tourisme de masse. On se sent comme à la maison, avec l'océan en prime."</p>
+                    <p class="testimonial-author">— Thomas K., Belgique</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Réservation -->
+        <section class="cta" id="reservation">
+            <h2>Prêt à découvrir l'horizon ?</h2>
+            <p>Réservez dès maintenant votre escapade portugaise</p>
+            <a href="#contact" class="btn">Réserver maintenant</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <p><strong>Casa do Horizonte</strong></p>
+        <p>Rua do Mar, 47 - 2655 Ericeira, Portugal</p>
+        <p>📧 contact@casadohorizonte.pt | ☎️ +351 261 xxx xxx</p>
+        <p style="margin-top: 1rem; opacity: 0.7;">© 2026 Casa do Horizonte - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
